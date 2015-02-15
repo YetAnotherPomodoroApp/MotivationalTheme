@@ -20,20 +20,17 @@
     <Setting Name="PeriodLongBreak" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">15</Value>
     </Setting>
-    <Setting Name="SoundNotification" Type="System.Boolean" Scope="User">
+    <Setting Name="UseSoundEfects" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="LightTheme" Type="System.Boolean" Scope="User">
+    <Setting Name="UseLightTheme" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="OpacityLevel" Type="System.Double" Scope="User">
+    <Setting Name="TimerForegroundOpacity" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.6</Value>
     </Setting>
-    <Setting Name="ShadowOpacityLevel" Type="System.Double" Scope="User">
+    <Setting Name="TimerShadowOpacity" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.6</Value>
-    </Setting>
-    <Setting Name="TextBrush" Type="System.String" Scope="User">
-      <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="CurrentScreenWidth" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -43,6 +40,30 @@
     </Setting>
     <Setting Name="CountBackwards" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WindowBackgroundColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#F2F2F2</Value>
+    </Setting>
+    <Setting Name="WindowBackground2Color" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#E5E5E5</Value>
+    </Setting>
+    <Setting Name="WindowForegroundColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#222222</Value>
+    </Setting>
+    <Setting Name="WindowShadowColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#000000</Value>
+    </Setting>
+    <Setting Name="WindowShadowOpacity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.3</Value>
+    </Setting>
+    <Setting Name="TimerForegroundColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FFFFFF</Value>
+    </Setting>
+    <Setting Name="TimerShadowColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#000000</Value>
+    </Setting>
+    <Setting Name="AccentColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FF0080</Value>
     </Setting>
   </Settings>
 </SettingsFile>

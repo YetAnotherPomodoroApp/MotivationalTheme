@@ -1,0 +1,1 @@
+for /d /r . %%d in (Bin Debug Release obj) do @if exist "%%d" echo "%%d" && rd /s/q "%%d"

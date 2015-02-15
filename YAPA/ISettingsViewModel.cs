@@ -15,38 +15,38 @@ namespace YAPA
         /// <summary>
         /// The desired opacity of the 
         /// </summary>
-        double ClockOpacity { get; set; }
+        double TimerForegroundOpacity { get; set; }
 
         /// <summary>
         /// The desired opacity of the 
         /// </summary>
-        double ShadowOpacity { get; set; }
+        double TimerShadowOpacity { get; set; }
 
         /// <summary>
-        /// True if we are to use white text to render;
+        /// True if we are to use light theme;
         /// otherwise, false.
         /// </summary>
-        bool UseWhiteText { get; set; }
+        bool UseLightTheme { get; set; }
 
         /// <summary>
-        /// The font size used to render the clock;
+        /// The ammount of minutes
         /// </summary>
         int WorkTime { get; set; }
 
         /// <summary>
-        /// The font size used to render the clock;
+        /// The ammount of minutes
         /// </summary>
         int BreakTime { get; set; }
 
         /// <summary>
-        /// The font size used to render the clock;
+        /// The ammount of minutes
         /// </summary>
-        int BreakLongTime { get; set; }
+        int LongBreakTime { get; set; }
 
         /// <summary>
-        /// The font size used to render the clock.
+        /// Use sounds
         /// </summary>
-        bool SoundEfects { get; set; }
+        bool UseSoundEfects { get; set; }
 
         /// <summary>
         /// Count time backwards

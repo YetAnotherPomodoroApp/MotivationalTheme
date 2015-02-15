@@ -18,14 +18,6 @@ namespace YAPA
     {
         private IMainViewModel _host;
         private ICommand _saveSettings;
-        private double _clockOpacity;
-        private double _shadowOpacity;
-        private bool _useWhiteText;
-        private int _workTime;
-        private int _breakTime;
-        private int _breakLongTime;
-        private bool _soundEfects;
-        private bool _countBackwards;
         private ItemRepository _itemRepository;
 
         // INPC support
@@ -34,21 +26,13 @@ namespace YAPA
         /// <summary>
         /// Window constructor.
         /// </summary>
-        public  Settings(IMainViewModel host, double currentOpacity, Brush currentTextColor, int workTime, int breakTime, int breakLongTime, bool soundEfects, double shadowOpacity, bool countBackwards)
+        public Settings(IMainViewModel host)
         {
             InitializeComponent();
             this.DataContext = this;
             _host = host;
-            _useWhiteText = true;
-            _soundEfects = soundEfects;
-            _clockOpacity = currentOpacity;
             _saveSettings = new SaveSettings(this);
-            _useWhiteText = (currentTextColor.ToString() == Brushes.White.ToString());
-            _breakTime = breakTime;
-            _breakLongTime = breakLongTime;
-            _workTime = workTime;
-            _shadowOpacity = shadowOpacity;
-            _countBackwards = countBackwards;
+
             MouseLeftButtonDown += Settings_MouseLeftButtonDown;
             _itemRepository = new ItemRepository();
 
@@ -132,28 +116,30 @@ namespace YAPA
         /// <summary>
         /// The desired opacity of the 
         /// </summary>
-        public double ClockOpacity
+        private double _timerForegroundOpacity;
+        public double TimerForegroundOpacity
         {
-            get { return _clockOpacity; }
+            get { return _timerForegroundOpacity; }
             set
             {
-                _clockOpacity = value;
-                _host.ClockOpacity = value;
-                RaisePropertyChanged("ClockOpacity");
+                _timerForegroundOpacity = value;
+                _host.TimerForegroundOpacity = value;
+                NotifyPropertyChanged("TimerForegroundOpacity");
             }
         }
 
         /// <summary>
         /// The desired opacity of the 
         /// </summary>
-        public double ShadowOpacity
+        private double _timerShadowOpacity;
+        public double TimerShadowOpacity
         {
-            get { return _shadowOpacity; }
+            get { return _timerShadowOpacity; }
             set
             {
-                _shadowOpacity = value;
-                _host.ShadowOpacity = value;
-                RaisePropertyChanged("ShadowOpacity");
+                _timerShadowOpacity = value;
+                _host.TimerShadowOpacity = value;
+                NotifyPropertyChanged("TimerShadowOpacity");
             }
         }
 
@@ -161,28 +147,52 @@ namespace YAPA
         /// True if we are to use white text to render;
         /// otherwise, false.
         /// </summary>
-        public bool UseWhiteText
+        private bool _useLightTheme;
+        public bool UseLightTheme
         {
-            get { return _useWhiteText; }
+            get { return _useLightTheme; }
             set
             {
-                _useWhiteText = value;
-                _host.TextBrush = (_useWhiteText ? Brushes.White : Brushes.Black);
-                RaisePropertyChanged("UseWhiteText");
+                _useLightTheme = value;
+
+                // Set colors
+                _host.TimerForegroundColor = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_TIMER_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_TIMER_FOREGROUND));
+                _host.TimerShadowColor = (_useLightTheme ? Utils.HexToColor(Const.COLOR_LIGHT_TIMER_SHADOW) : Utils.HexToColor(Const.COLOR_DARK_TIMER_SHADOW));
+                _host.WindowBackgroundColor = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_BACKGROUND) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_BACKGROUND));
+                _host.WindowBackground2Color = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_BACKGROUND2) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_BACKGROUND2));
+                _host.WindowForegroundColor = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_FOREGROUND));
+                _host.WindowShadowColor = (_useLightTheme ? Utils.HexToColor(Const.COLOR_LIGHT_WINDOW_SHADOW) : Utils.HexToColor(Const.COLOR_DARK_WINDOW_SHADOW));
+                _host.WindowShadowOpacity = (_useLightTheme ? Const.COLOR_LIGHT_WINDOW_SHADOW_OPACITY : Const.COLOR_DARK_WINDOW_SHADOW_OPACITY);
+
+                NotifyPropertyChanged("UseLightTheme");
             }
         }
 
-        public bool SoundEfects
+        private string _accentColor;
+        public string AccentColor
         {
-            get { return _soundEfects; }
+            get { return _accentColor; }
             set
             {
-                _soundEfects = value;
-                _host.SoundEffects = value;
-                RaisePropertyChanged("SoundEfects");
+                _accentColor = value;
+                _host.AccentColor = Utils.HexToBrush(value);
+                NotifyPropertyChanged("AccentColor");
             }
         }
 
+        private bool _useSoundEfects;
+        public bool UseSoundEfects
+        {
+            get { return _useSoundEfects; }
+            set
+            {
+                _useSoundEfects = value;
+                _host.UseSoundEffects = value;
+                NotifyPropertyChanged("UseSoundEfects");
+            }
+        }
+
+        private int _workTime;
         public int WorkTime
         {
             get { return _workTime; }
@@ -190,10 +200,11 @@ namespace YAPA
             {
                 _workTime = value;
                 _host.WorkTime = value;
-                RaisePropertyChanged("WorkTime");
+                NotifyPropertyChanged("WorkTime");
             }
         }
 
+        private int _breakTime;
         public int BreakTime
         {
             get { return _breakTime; }
@@ -201,21 +212,24 @@ namespace YAPA
             {
                 _breakTime = value;
                 _host.BreakTime = value;
-                RaisePropertyChanged("BreakTime");
+                NotifyPropertyChanged("BreakTime");
             }
         }
 
-        public int BreakLongTime
+        private int _longBreakTime;
+        public int LongBreakTime
         {
-            get { return _breakLongTime; }
+            get { return _longBreakTime; }
             set
             {
-                _breakLongTime = value;
-                _host.BreakLongTime = value;
-                RaisePropertyChanged("BreakLongTime");
+                _longBreakTime = value;
+                _host.LongBreakTime = value;
+
+                NotifyPropertyChanged("LongBreakTime");
             }
         }
 
+        private bool _countBackwards;
         public bool CountBackwards
         {
             get
@@ -226,7 +240,7 @@ namespace YAPA
             {
                 _countBackwards = value;
                 _host.CountBackwards = value;
-                this.RaisePropertyChanged("CountBackwards");
+                this.NotifyPropertyChanged("CountBackwards");
             }
         }
 
@@ -241,7 +255,7 @@ namespace YAPA
         /// <summary>
         /// Used to raise change notifications to other consumers.
         /// </summary>
-        private void RaisePropertyChanged(string propName)
+        private void NotifyPropertyChanged(string propName)
         {
             if (PropertyChanged != null)
             {

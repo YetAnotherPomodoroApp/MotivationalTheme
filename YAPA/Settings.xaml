@@ -9,7 +9,7 @@
         mc:Ignorable="d" 
         x:Class="YAPA.Settings"
         Title="YAPA Settings" 
-        Height="530" 
+        Height="570" 
         Width="450"
         ResizeMode="NoResize"
         WindowStyle="None"
@@ -65,36 +65,67 @@
                             <xctk:IntegerUpDown
                             Margin="0,0,0,0"
                             ParsingNumberStyle="Number"
-                            Value="{Binding BreakLongTime, Mode=TwoWay}"
+                            Value="{Binding LongBreakTime, Mode=TwoWay}"
                             Minimum="1" BorderThickness="0"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,15">
-                            <Label Content="Opacity level"/>
+                            <Label Content="Accent color"/>
+                            <ListBox
+                    		    SelectedItem="{Binding AccentColor, Mode=TwoWay}"
+                                >
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel
+                                            Orientation="Horizontal"
+                                            />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Width="32"
+                                            Height="24"
+                                            CornerRadius="2"
+                                            Background="{Binding}"
+                                            />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <ListBoxItem>#FF0080</ListBoxItem>
+                                <ListBoxItem>#2AC4F3</ListBoxItem>
+                                <ListBoxItem>#3A5795</ListBoxItem>
+                                <ListBoxItem>#73B717</ListBoxItem>
+                                <ListBoxItem>#800069</ListBoxItem>
+                                <ListBoxItem>#00A6A6</ListBoxItem>
+                                <ListBoxItem>#F2C100</ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0,0,0,15">
+                            <Label Content="Timer opacity"/>
                             <Slider TickPlacement="BottomRight"
                             Margin="5,0,5,0"
                     		Minimum="0"
                     		Maximum="1"
-                    		IsMoveToPointEnabled="False"
-                    		Value="{Binding ClockOpacity, Mode=TwoWay}"
+                    		IsMoveToPointEnabled="True"
+                    		Value="{Binding TimerForegroundOpacity, Mode=TwoWay}"
                     		Ticks=".0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1.0" BorderThickness="0"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Margin="0,0,0,15">
-                            <Label Content="Shadow opacity"/>
+                            <Label Content="Timer shadow opacity"/>
                             <Slider TickPlacement="BottomRight"
                             Margin="5,0,5,0"
                     		Minimum="0"
                     		Maximum="1"
-                    		IsMoveToPointEnabled="False"
-                    		Value="{Binding ShadowOpacity, Mode=TwoWay}"
+                    		IsMoveToPointEnabled="True"
+                    		Value="{Binding TimerShadowOpacity, Mode=TwoWay}"
                     		Ticks=".0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1.0" BorderThickness="0"/>
                         </StackPanel>
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
-                                <CheckBox  IsChecked="{Binding SoundEfects, Mode=TwoWay}" HorizontalAlignment="Left">
+                                <CheckBox  IsChecked="{Binding UseSoundEfects, Mode=TwoWay}" HorizontalAlignment="Left">
                                     <Label Margin="0,-5" Content="Sound notifications"/>
                                 </CheckBox>
                                 <CheckBox Margin="100,0,0,0"
-                                  IsChecked="{Binding UseWhiteText, Mode=TwoWay}" 
+                                  IsChecked="{Binding UseLightTheme, Mode=TwoWay}" 
                                   HorizontalAlignment="Right">
                                     <Label Margin="0,-5" Content="Light theme"/>
                                 </CheckBox>
@@ -108,19 +139,26 @@
                         <TextBlock Margin="0,5,0,0" TextWrapping="Wrap"  TextAlignment="Center"><Run Text="Yet Another Pomodoro Application follow at:"/><LineBreak /><Hyperlink Click="Hyperlink_Click" NavigateUri="http://lukaszbanasiak.github.io/YAPA/" TextDecorations=""><Run Text="http://lukaszbanasiak.github.io/YAPA/"/></Hyperlink></TextBlock>
                     </StackPanel>
                 </StackPanel>
-                <Button x:Name="btnClose"
+                <Button
+                    x:Name="btnClose"
             		Command="{Binding SaveSettings}"
             		Content="Save"
             		Cursor="Hand"
             		ToolTip="Save settings"
-            		Margin="351,421,10,10" RenderTransformOrigin="0.478,0.513">
+            		Margin="351,421,10,10"
+                    RenderTransformOrigin="0.478,0.513"
+                    VerticalAlignment="Bottom"
+                    Height="52"
+                    >
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <TextBlock Text="{TemplateBinding Content}" 
+                            <TextBlock
+                                Text="{TemplateBinding Content}" 
             					HorizontalAlignment="Stretch"
             					VerticalAlignment="Center"
             					TextAlignment="Center"
-            					FontSize="12pt"/>
+            					FontSize="12pt"
+                                />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
