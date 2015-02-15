@@ -1230,7 +1230,7 @@ namespace YAPA
         {
             get
             {
-                if (CurrentPeriodType == PomodoroPeriodType.Pomodoro && CurrentPeriodStatus == PomodoroPeriodStatus.Running)
+                if (CurrentPeriodType == PomodoroPeriodType.Pomodoro && (CurrentPeriodStatus == PomodoroPeriodStatus.Running || CurrentPeriodStatus == PomodoroPeriodStatus.Paused))
                     return (!string.IsNullOrWhiteSpace(CurrentQuote.Source) ? CurrentQuote.Source : string.Empty);
 
                 return string.Empty;
