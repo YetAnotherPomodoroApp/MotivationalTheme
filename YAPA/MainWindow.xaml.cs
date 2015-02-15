@@ -173,7 +173,7 @@ namespace YAPA
             // Update progress bar value
             UpdateProgressValue((double)(totalSecondsElapsed / periodSecondsTotal));
 
-            if (totalSecondsElapsed >= 3)//periodSecondsTotal)
+            if (totalSecondsElapsed >= periodSecondsTotal)
                 DoCompletePeriod();
         }
 
