@@ -8,12 +8,13 @@ using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Media;
 using System.Windows.Shell;
+using YAPA;
 using YAPA.Contracts;
 using YAPA.Shared;
 using WindowState = System.Windows.WindowState;
-using YAPA.YAPA.WPF.Themes.YAPA;
 
-namespace YAPA
+
+namespace Motivational
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

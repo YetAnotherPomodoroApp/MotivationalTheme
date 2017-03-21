@@ -1,9 +1,9 @@
 ﻿<Application
-    x:Class="YAPA.App"
+    x:Class="Motivational.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converters="clr-namespace:YAPA.Converters"
-    xmlns:local="clr-namespace:YAPA"
+    xmlns:converters="clr-namespace:Motivational.Converters"
+    xmlns:local="clr-namespace:Motivational"
     StartupUri="MainWindow.xaml"
     >
     

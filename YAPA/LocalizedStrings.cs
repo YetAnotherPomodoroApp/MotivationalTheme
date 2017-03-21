@@ -1,7 +1,6 @@
-﻿
-using YAPA.Localizations;
+﻿using Motivational.Localizations;
 
-namespace YAPA
+namespace Motivational
 {
     /// <summary>
     /// Provides access to string resources.

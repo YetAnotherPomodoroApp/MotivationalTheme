@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAPA.Contracts;
 
-namespace YAPA
+namespace Motivational
 {
-using System;
-
-namespace YAPA.WPF.Themes.YAPA
-{
-
     public class YapaThemeMeta : IThemeMeta
     {
-        public string Title => "YAPA 1.0";
+        public string Title => "Motivational";
 
         public Type Theme => typeof(MainWindow);
 
@@ -74,6 +65,5 @@ namespace YAPA.WPF.Themes.YAPA
             _settings.DeferChanges();
         }
     }
-}
 
 }

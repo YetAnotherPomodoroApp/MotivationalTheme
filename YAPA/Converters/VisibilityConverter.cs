@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace YAPA.Converters
+namespace Motivational.Converters
 {
     public class VisibilityConverter : System.Windows.Data.IValueConverter
     {

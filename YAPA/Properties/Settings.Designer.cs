@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace YAPA.Properties {
+namespace Motivational.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

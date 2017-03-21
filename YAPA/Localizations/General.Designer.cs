@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace YAPA.Localizations {
+namespace Motivational.Localizations {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace YAPA.Localizations {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("YAPA.Localizations.General", typeof(General).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Motivational.Localizations.General", typeof(General).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
