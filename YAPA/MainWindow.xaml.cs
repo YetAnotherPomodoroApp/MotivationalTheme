@@ -8,8 +8,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Media;
 using System.Windows.Shell;
-using WindowState = System.Windows.WindowState;
+using YAPA.Contracts;
 using YAPA.Shared;
+using WindowState = System.Windows.WindowState;
+using YAPA.YAPA.WPF.Themes.YAPA;
 
 namespace YAPA
 {
@@ -18,6 +20,9 @@ namespace YAPA
     /// </summary>
     public partial class MainWindow : AbstractWindow, INotifyPropertyChanged
     {
+        private readonly MotivationalThemeSettings _settings;
+        private readonly PomodoroEngineSettings _baseSettings;
+
         /// <summary>
         /// Pomodoro period enum
         /// </summary>
@@ -58,8 +63,10 @@ namespace YAPA
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public MainWindow()
+        public MainWindow(MotivationalThemeSettings settings, PomodoroEngineSettings baseSettings)
         {
+            _settings = settings;
+            _baseSettings = baseSettings;
             InitializeComponent();
 
             base.DataContext = this;
@@ -616,12 +623,7 @@ namespace YAPA
         {
             get
             {
-                return (YAPA.Properties.Settings.Default.UseLightTheme);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.UseLightTheme = value;
-                NotifyPropertyChanged("UseLightTheme");
+                return (_settings.UseWhiteText);
             }
         }
 
@@ -744,32 +746,17 @@ namespace YAPA
 
         public int WorkTime
         {
-            get { return YAPA.Properties.Settings.Default.PeriodWork; }
-            set
-            {
-                YAPA.Properties.Settings.Default.PeriodWork = value;
-                NotifyPropertyChanged("WorkTime");
-            }
+            get { return _baseSettings.WorkTime; }
         }
 
         public int BreakTime
         {
-            get { return YAPA.Properties.Settings.Default.PeriodShortBreak; }
-            set
-            {
-                YAPA.Properties.Settings.Default.PeriodShortBreak = value;
-                NotifyPropertyChanged("BreakTime");
-            }
+            get { return _baseSettings.BreakTime; }
         }
 
         public int LongBreakTime
         {
-            get { return YAPA.Properties.Settings.Default.PeriodLongBreak; }
-            set
-            {
-                YAPA.Properties.Settings.Default.PeriodLongBreak = value;
-                NotifyPropertyChanged("LongBreakTime");
-            }
+            get { return _baseSettings.LongBreakTime; }
         }
 
         public TaskbarItemProgressState ProgressState
@@ -807,12 +794,7 @@ namespace YAPA
         {
             get
             {
-                return YAPA.Properties.Settings.Default.CountBackwards;
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.CountBackwards = value;
-                this.NotifyPropertyChanged("CountBackwards");
+                return _baseSettings.CountBackwards;
             }
         }
 

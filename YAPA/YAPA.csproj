@@ -89,6 +89,7 @@
       <DependentUpon>General.resx</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MotivationTheme.cs" />
     <Compile Include="Quotes.cs" />
     <Compile Include="Utils.cs" />
     <Page Include="App.xaml">
