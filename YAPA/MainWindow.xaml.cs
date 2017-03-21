@@ -74,19 +74,6 @@ namespace YAPA
         }
 
 
-        private ItemRepository _repository = null;
-        private ItemRepository Repository
-        {
-            get
-            {
-                if (null == _repository)
-                    _repository = new ItemRepository();
-
-                return _repository;
-            }
-        }
-
-
         #region Timer
 
         /// <summary>
@@ -510,8 +497,7 @@ namespace YAPA
             CurrentTimeSecondsText = "00";
 
             // Mark current Pomodoro as completed
-            if (CurrentPeriodType == PomodoroPeriodType.Pomodoro)
-                Repository.CompletePomodoro();
+    
         }
 
         /// <summary>

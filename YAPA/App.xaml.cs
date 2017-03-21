@@ -5,28 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.Shell;
 
 namespace YAPA
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application, ISingleInstanceApp
+    public partial class App : Application
     {
         [STAThread]
         public static void Main()
         {
-            if (SingleInstance<App>.InitializeAsFirstInstance("AdvancedJumpList"))
-            {
-                var application = new App();
+            var application = new App();
 
-                application.Init();
-                application.Run();
+            application.Init();
+            application.Run();
 
-                // Allow single instance code to perform cleanup operations
-                SingleInstance<App>.Cleanup();
-            }
+            // Allow single instance code to perform cleanup operations
         }
 
         public void Init()
