@@ -11,18 +11,12 @@ namespace Motivational
 
         public Type Settings => typeof(MotivationalThemeSettings);
 
-        public Type SettingEditWindow => null;
+        public Type SettingEditWindow => typeof(MotivationalThemeSettingsWindow);
     }
 
     public class MotivationalThemeSettings : IPluginSettings
     {
         private readonly ISettingsForComponent _settings;
-
-        public int Width
-        {
-            get { return _settings.Get(nameof(Width), 200); }
-            set { _settings.Update(nameof(Width), value); }
-        }
 
         public double ClockOpacity
         {

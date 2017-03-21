@@ -17,6 +17,7 @@
     WindowStyle="None"
     Topmost="True"
     BorderThickness="30,2,30,30"
+    MouseLeftButtonDown="MainWindow_MouseLeftButtonDown"
     >
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo ProgressState="{Binding ProgressState}" ProgressValue="{Binding ProgressValue}"/>
@@ -576,7 +577,7 @@
                     x:Name="ButtonSettings"
                     Content=""
                     ToolTip="{Binding Source={StaticResource LocalizedStrings}, Path=GeneralResources.app_button_settings}"
-                    Click="Settings_OnClick"
+                    Command="{Binding ViewModel.ShowSettingsCommand}"
                     Style="{StaticResource StyleButtonIcon}"
                     />
 
@@ -599,7 +600,7 @@
                     x:Name="ButtonExit"
                     Content=""
                     ToolTip="{Binding Source={StaticResource LocalizedStrings}, Path=GeneralResources.app_button_window_close}"
-                    Click="Exit_OnClick"
+                    Click="ButtonExit_OnClick"
                     Style="{StaticResource StyleButtonIcon}"
                     />
 
@@ -651,7 +652,7 @@
                         x:Name="ButtonStop"
                         Content=""
                         ToolTip="{Binding Source={StaticResource LocalizedStrings}, Path=GeneralResources.app_button_stop_title}"
-                        Click="ButtonStop_Click"
+                        Command="{Binding ViewModel.StopCommand}"
                         Style="{StaticResource StyleButtonIconControl}"
                         Visibility="{Binding CanStop, Converter={StaticResource VisibilityConverter}}"
                         />
@@ -661,20 +662,11 @@
                         x:Name="ButtonStart"
                         Content=""
                         ToolTip="{Binding Source={StaticResource LocalizedStrings}, Path=GeneralResources.app_button_start_title}"
-                        Click="ButtonStart_Click"
+                        Command="{Binding ViewModel.StartCommand}"
                         Style="{StaticResource StyleButtonIconControl}"
                         Visibility="{Binding CanStart, Converter={StaticResource VisibilityConverter}}"
                         />
-
-                    <!-- Pause button -->
-                    <Button
-                        x:Name="ButtonPause"
-                        Content=""
-                        ToolTip="{Binding Source={StaticResource LocalizedStrings}, Path=GeneralResources.app_button_pause_title}"
-                        Click="ButtonPause_Click"
-                        Style="{StaticResource StyleButtonIconControl}"
-                        Visibility="{Binding CanPause, Converter={StaticResource VisibilityConverter}}"
-                        />
+            
                 </StackPanel>
             </Border>
 

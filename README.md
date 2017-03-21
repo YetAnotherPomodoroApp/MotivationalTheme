@@ -1,4 +1,4 @@
-YAPA
+YAPA 2 Motivational theme
 ====
 
 YAPA is minimalistic desktop timer app for Pomodoro Technique users. 
@@ -7,25 +7,3 @@ YAPA is minimalistic desktop timer app for Pomodoro Technique users.
 ![Mouse over](https://cloud.githubusercontent.com/assets/3337580/6205047/ed1c5608-b560-11e4-845d-77290243bdb3.png)
 
 
-Features:
----------
-
-* Configurable periods
-* Sound control
-* Pomodoro™ counter :)
-* Pomodoro counter history similar to github contributions
-* Shows period progress on taskbar
-* Control app using taskbar jumplist
-* Select opacity for timer
-* Select light or dark theme for timer
-* Counting time backwards
-
-Contributors:
--------------
-
-* [@lukaszbanasiak](https://github.com/lukaszbanasiak)
-* [@floatas](https://github.com/floatas)
-* [... more](https://github.com/lukaszbanasiak/YAPA/graphs/contributors)
-
-
-Visit YAPA website for more info http://lukaszbanasiak.github.io/YAPA/

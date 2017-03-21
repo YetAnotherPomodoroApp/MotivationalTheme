@@ -89,6 +89,9 @@
       <DependentUpon>General.resx</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MotivationalThemeSettingsWindow.xaml.cs">
+      <DependentUpon>MotivationalThemeSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MotivationTheme.cs" />
     <Compile Include="Quotes.cs" />
     <Compile Include="Utils.cs" />
@@ -109,6 +112,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MotivationalThemeSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
