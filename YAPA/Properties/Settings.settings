@@ -2,15 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="YAPA.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="WindowLeft" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="WindowTop" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="IsFirstRun" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="PeriodWork" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
@@ -20,50 +11,11 @@
     <Setting Name="PeriodLongBreak" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">15</Value>
     </Setting>
-    <Setting Name="UseSoundEfects" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="UseLightTheme" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="TimerForegroundOpacity" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.6</Value>
-    </Setting>
-    <Setting Name="TimerShadowOpacity" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.6</Value>
-    </Setting>
-    <Setting Name="CurrentScreenWidth" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="CurrentScreenHeight" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="CountBackwards" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="WindowBackgroundColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#F2F2F2</Value>
-    </Setting>
-    <Setting Name="WindowBackground2Color" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#E5E5E5</Value>
-    </Setting>
-    <Setting Name="WindowForegroundColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#222222</Value>
-    </Setting>
-    <Setting Name="WindowShadowColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#000000</Value>
-    </Setting>
-    <Setting Name="WindowShadowOpacity" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.3</Value>
-    </Setting>
-    <Setting Name="TimerForegroundColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#FFFFFF</Value>
-    </Setting>
-    <Setting Name="TimerShadowColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#000000</Value>
-    </Setting>
-    <Setting Name="AccentColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#FF0080</Value>
     </Setting>
   </Settings>
 </SettingsFile>

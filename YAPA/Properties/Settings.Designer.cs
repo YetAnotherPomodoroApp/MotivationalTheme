@@ -25,42 +25,6 @@ namespace YAPA.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int WindowLeft {
-            get {
-                return ((int)(this["WindowLeft"]));
-            }
-            set {
-                this["WindowLeft"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int WindowTop {
-            get {
-                return ((int)(this["WindowTop"]));
-            }
-            set {
-                this["WindowTop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsFirstRun {
-            get {
-                return ((bool)(this["IsFirstRun"]));
-            }
-            set {
-                this["IsFirstRun"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public int PeriodWork {
             get {
@@ -98,72 +62,12 @@ namespace YAPA.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UseSoundEfects {
-            get {
-                return ((bool)(this["UseSoundEfects"]));
-            }
-            set {
-                this["UseSoundEfects"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool UseLightTheme {
             get {
                 return ((bool)(this["UseLightTheme"]));
             }
             set {
                 this["UseLightTheme"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
-        public double TimerForegroundOpacity {
-            get {
-                return ((double)(this["TimerForegroundOpacity"]));
-            }
-            set {
-                this["TimerForegroundOpacity"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
-        public double TimerShadowOpacity {
-            get {
-                return ((double)(this["TimerShadowOpacity"]));
-            }
-            set {
-                this["TimerShadowOpacity"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double CurrentScreenWidth {
-            get {
-                return ((double)(this["CurrentScreenWidth"]));
-            }
-            set {
-                this["CurrentScreenWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double CurrentScreenHeight {
-            get {
-                return ((double)(this["CurrentScreenHeight"]));
-            }
-            set {
-                this["CurrentScreenHeight"] = value;
             }
         }
         
@@ -176,102 +80,6 @@ namespace YAPA.Properties {
             }
             set {
                 this["CountBackwards"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#F2F2F2")]
-        public string WindowBackgroundColor {
-            get {
-                return ((string)(this["WindowBackgroundColor"]));
-            }
-            set {
-                this["WindowBackgroundColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#E5E5E5")]
-        public string WindowBackground2Color {
-            get {
-                return ((string)(this["WindowBackground2Color"]));
-            }
-            set {
-                this["WindowBackground2Color"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#222222")]
-        public string WindowForegroundColor {
-            get {
-                return ((string)(this["WindowForegroundColor"]));
-            }
-            set {
-                this["WindowForegroundColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#000000")]
-        public string WindowShadowColor {
-            get {
-                return ((string)(this["WindowShadowColor"]));
-            }
-            set {
-                this["WindowShadowColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
-        public double WindowShadowOpacity {
-            get {
-                return ((double)(this["WindowShadowOpacity"]));
-            }
-            set {
-                this["WindowShadowOpacity"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FFFFFF")]
-        public string TimerForegroundColor {
-            get {
-                return ((string)(this["TimerForegroundColor"]));
-            }
-            set {
-                this["TimerForegroundColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#000000")]
-        public string TimerShadowColor {
-            get {
-                return ((string)(this["TimerShadowColor"]));
-            }
-            set {
-                this["TimerShadowColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FF0080")]
-        public string AccentColor {
-            get {
-                return ((string)(this["AccentColor"]));
-            }
-            set {
-                this["AccentColor"] = value;
             }
         }
     }

@@ -465,7 +465,6 @@ namespace YAPA
                 AddPomodoroPeriod();
             }
 
-            PlaySoundPeriodStart();
             StorePeriodData(periodType, PomodoroPeriodStatus.Running);
         }
 
@@ -503,7 +502,6 @@ namespace YAPA
 
             StopTimer();
 
-            PlaySoundPeriodCompleted();
             StorePeriodData(CurrentPeriodType, PomodoroPeriodStatus.Completed);
 
             // We're done
@@ -591,82 +589,10 @@ namespace YAPA
                 PeriodCompletedIndicator.Stop();
         }
 
-        
-        /// <summary>
-        /// Sound instance of period start
-        /// @TODO: PLAY SOUNDS ON BACKGROUND THREAD SINCE THIS WAY IT BLOCKS UI
-        /// </summary>
-        private SoundPlayer _soundPeriodStart = null;
-        private SoundPlayer SoundPeriodStart
-        {
-            get
-            {
-                if (!UseSoundEffects)
-                    return null;
 
-                if (null == _soundPeriodStart)
-                    _soundPeriodStart = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\tick.wav");
 
-                return _soundPeriodStart;
-            }
-            set
-            {
-                _soundPeriodStart = value;
-            }
-        }
 
-        /// <summary>
-        /// Sound instance of period complete
-        /// @TODO: PLAY SOUNDS ON BACKGROUND THREAD SINCE THIS WAY IT BLOCKS UI
-        /// </summary>
-        private SoundPlayer _soundPeriodCompleted = null;
-        private SoundPlayer SoundPeriodCompleted
-        {
-            get
-            {
-                if (!UseSoundEffects)
-                    return null;
 
-                if (null == _soundPeriodCompleted)
-                    _soundPeriodCompleted = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\ding.wav");
-
-                return _soundPeriodCompleted;
-            }
-            set
-            {
-                _soundPeriodCompleted = value;
-            }
-        }
-
-        /// <summary>
-        /// Plays period start sound if UseSoundEffects flag is allowed 
-        /// </summary>
-        private void PlaySoundPeriodStart()
-        {
-            if (null != SoundPeriodStart)
-                SoundPeriodStart.Play();
-        }
-
-        /// <summary>
-        /// Plays period completed sound if UseSoundEffects flag is allowed 
-        /// </summary>
-        private void PlaySoundPeriodCompleted()
-        {
-            if (null != SoundPeriodCompleted)
-                SoundPeriodCompleted.Play();
-        }
-
-        /// <summary>
-        /// Stops all sounds
-        /// </summary>
-        private void StopAllSounds()
-        {
-            if (null != SoundPeriodStart)
-                SoundPeriodStart.Stop();
-
-            if (null != SoundPeriodCompleted)
-                SoundPeriodCompleted.Stop();
-        }
 
         /// <summary>
         /// Stores and directly changes current period (it is skipping the business logic)
@@ -829,15 +755,6 @@ namespace YAPA
             get { return _showSettings; }
         }
 
-        public bool UseSoundEffects
-        {
-            get { return YAPA.Properties.Settings.Default.UseSoundEfects; }
-            set
-            {
-                YAPA.Properties.Settings.Default.UseSoundEfects = value;
-                NotifyPropertyChanged("UseSoundEfects");
-            }
-        }
 
         public int WorkTime
         {
@@ -1089,7 +1006,6 @@ namespace YAPA
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            StopAllSounds();
             DoPomodoroReset();
         }
 
