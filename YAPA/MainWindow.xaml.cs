@@ -20,7 +20,7 @@ namespace YAPA
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : AbstractWindow, IMainViewModel, INotifyPropertyChanged
+    public partial class MainWindow : AbstractWindow, INotifyPropertyChanged
     {
         /// <summary>
         /// Pomodoro period enum
@@ -68,7 +68,6 @@ namespace YAPA
 
             base.DataContext = this;
 
-            _showSettings = new ShowSettings(this);
 
             // Initialize Pomodoro session
             ResetPomodoroPeriod();
@@ -767,12 +766,8 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToBrush(YAPA.Properties.Settings.Default.TimerForegroundColor);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.TimerForegroundColor = Utils.BrushToHex(value);
-                NotifyPropertyChanged("TimerForegroundColor");
+                return (UseLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_TIMER_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_TIMER_FOREGROUND));
+
             }
         }
 
@@ -780,12 +775,8 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToColor(YAPA.Properties.Settings.Default.TimerShadowColor);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.TimerShadowColor = Utils.ColorToHex(value);
-                NotifyPropertyChanged("TimerShadowColor");
+                return (UseLightTheme ? Utils.HexToColor(Const.COLOR_LIGHT_TIMER_SHADOW) : Utils.HexToColor(Const.COLOR_DARK_TIMER_SHADOW));
+
             }
         }
 
@@ -793,12 +784,7 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToBrush(YAPA.Properties.Settings.Default.WindowBackgroundColor);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.WindowBackgroundColor = Utils.BrushToHex(value);
-                NotifyPropertyChanged("WindowBackgroundColor");
+                return (UseLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_BACKGROUND) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_BACKGROUND));
             }
         }
 
@@ -806,12 +792,7 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToBrush(YAPA.Properties.Settings.Default.WindowBackground2Color);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.WindowBackground2Color = Utils.BrushToHex(value);
-                NotifyPropertyChanged("WindowBackground2Color");
+                return (UseLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_BACKGROUND2) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_BACKGROUND2));
             }
         }
 
@@ -819,12 +800,7 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToBrush(YAPA.Properties.Settings.Default.WindowForegroundColor);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.WindowForegroundColor = Utils.BrushToHex(value);
-                NotifyPropertyChanged("WindowForegroundColor");
+                return (UseLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_FOREGROUND));
             }
         }
 
@@ -832,12 +808,7 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToColor(YAPA.Properties.Settings.Default.WindowShadowColor);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.WindowShadowColor = Utils.ColorToHex(value);
-                NotifyPropertyChanged("WindowShadowColor");
+                return (UseLightTheme ? Utils.HexToColor(Const.COLOR_LIGHT_WINDOW_SHADOW) : Utils.HexToColor(Const.COLOR_DARK_WINDOW_SHADOW));
             }
         }
 
@@ -845,12 +816,7 @@ namespace YAPA
         {
             get
             {
-                return YAPA.Properties.Settings.Default.WindowShadowOpacity;
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.WindowShadowOpacity = value;
-                NotifyPropertyChanged("WindowShadowOpacity");
+                return (UseLightTheme ? Const.COLOR_LIGHT_WINDOW_SHADOW_OPACITY : Const.COLOR_DARK_WINDOW_SHADOW_OPACITY);
             }
         }
 

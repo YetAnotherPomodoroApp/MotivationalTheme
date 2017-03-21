@@ -156,13 +156,7 @@ namespace YAPA
                 _useLightTheme = value;
 
                 // Set colors
-                _host.TimerForegroundColor = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_TIMER_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_TIMER_FOREGROUND));
-                _host.TimerShadowColor = (_useLightTheme ? Utils.HexToColor(Const.COLOR_LIGHT_TIMER_SHADOW) : Utils.HexToColor(Const.COLOR_DARK_TIMER_SHADOW));
-                _host.WindowBackgroundColor = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_BACKGROUND) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_BACKGROUND));
-                _host.WindowBackground2Color = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_BACKGROUND2) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_BACKGROUND2));
-                _host.WindowForegroundColor = (_useLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_WINDOW_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_WINDOW_FOREGROUND));
-                _host.WindowShadowColor = (_useLightTheme ? Utils.HexToColor(Const.COLOR_LIGHT_WINDOW_SHADOW) : Utils.HexToColor(Const.COLOR_DARK_WINDOW_SHADOW));
-                _host.WindowShadowOpacity = (_useLightTheme ? Const.COLOR_LIGHT_WINDOW_SHADOW_OPACITY : Const.COLOR_DARK_WINDOW_SHADOW_OPACITY);
+                    
 
                 NotifyPropertyChanged("UseLightTheme");
             }
