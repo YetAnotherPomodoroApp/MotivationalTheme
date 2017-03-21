@@ -34,13 +34,9 @@ namespace YAPA
             this.InitializeComponent();
         }
 
-        #region ISingleInstanceApp Members
-
         public bool SignalExternalCommandLineArgs(IList<string> args)
         {
-            return ((MainWindow)MainWindow).ProcessCommandLineArgs(args);
+            return true;
         }
-
-        #endregion
     }
 }

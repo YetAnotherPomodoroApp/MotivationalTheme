@@ -13,13 +13,14 @@ using System.Reflection;
 using WindowState = System.Windows.WindowState;
 using GDIScreen = System.Windows.Forms.Screen;
 using System.Windows.Interop;
+using YAPA.Shared;
 
 namespace YAPA
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IMainViewModel, INotifyPropertyChanged
+    public partial class MainWindow : AbstractWindow, IMainViewModel, INotifyPropertyChanged
     {
         /// <summary>
         /// Pomodoro period enum
@@ -65,7 +66,7 @@ namespace YAPA
         {
             InitializeComponent();
 
-            this.DataContext = this;
+            base.DataContext = this;
 
             _showSettings = new ShowSettings(this);
 
@@ -74,12 +75,7 @@ namespace YAPA
             StorePeriodData(PomodoroPeriodType.Pomodoro, PomodoroPeriodStatus.Stopped);
 
             // Enable dragging
-            this.MouseLeftButtonDown += MainWindow_MouseLeftButtonDown;
-
-            // Save window position on close
-            this.Closing += MainWindow_Closing;
-
-            Loaded += new RoutedEventHandler(MainWindow_Loaded);
+            base.MouseLeftButtonDown += MainWindow_MouseLeftButtonDown;
         }
 
 
@@ -572,7 +568,7 @@ namespace YAPA
             get
             {
                 if (null == _periodCompletedAnimationStoryboard)
-                    _periodCompletedAnimationStoryboard = TryFindResource("PeriodCompletedIndicatorStoryboard") as Storyboard;
+                    _periodCompletedAnimationStoryboard = base.TryFindResource("PeriodCompletedIndicatorStoryboard") as Storyboard;
 
                 return _periodCompletedAnimationStoryboard;
             }
@@ -882,176 +878,6 @@ namespace YAPA
 
         #endregion
 
-
-        #region OS interactions
-
-        /// <summary>
-        /// Save window position when application exits
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void MainWindow_Closing(object sender, CancelEventArgs e)
-        {
-            if (YAPA.Properties.Settings.Default.IsFirstRun)
-            {
-                YAPA.Properties.Settings.Default.IsFirstRun = false;
-            }
-
-            GDIScreen currentScreen = GDIScreen.FromHandle(new WindowInteropHelper(this).Handle);
-
-            YAPA.Properties.Settings.Default.CurrentScreenHeight = currentScreen.WorkingArea.Height;
-            YAPA.Properties.Settings.Default.CurrentScreenWidth = currentScreen.WorkingArea.Width;
-
-            YAPA.Properties.Settings.Default.Save();
-        }
-
-        /// <summary>
-        /// Handle window position
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            CreateJumpList();
-
-            //if you want to handle to command line args on the first instance you may want it to go here
-            //or in the app.xaml.cs
-            //ProcessCommandLineArgs(SingleInstance<App>.CommandLineArgs);
-
-            GDIScreen currentScreen = GDIScreen.FromHandle(new WindowInteropHelper(this).Handle);
-
-            bool screenChanged = (currentScreen.WorkingArea.Height != YAPA.Properties.Settings.Default.CurrentScreenHeight ||
-                                currentScreen.WorkingArea.Width != YAPA.Properties.Settings.Default.CurrentScreenWidth);
-
-            // default position only for first run or when screen size changes
-            // position the clock at top / right, primary screen
-            if (YAPA.Properties.Settings.Default.IsFirstRun || screenChanged)
-            {
-                this.Left = SystemParameters.PrimaryScreenWidth - this.Width - 15.0;
-                this.Top = 0;
-            }
-        }
-
-        /// <summary>
-        /// OS integrated jumplist
-        /// </summary>
-        private void CreateJumpList()
-        {
-            JumpList jumpList = new JumpList();
-            JumpList.SetJumpList(Application.Current, jumpList);
-
-            JumpTask startTask = new JumpTask();
-            startTask.Title = Localizations.General.app_jumplist_item_start;
-            startTask.Description = Localizations.General.app_jumplist_item_start_title;
-            startTask.ApplicationPath = Assembly.GetEntryAssembly().Location;
-            startTask.Arguments = "/start";
-            startTask.IconResourceIndex = 7;
-            jumpList.JumpItems.Add(startTask);
-
-            JumpTask pauseTask = new JumpTask();
-            pauseTask.Title = Localizations.General.app_jumplist_item_pause;
-            pauseTask.Description = Localizations.General.app_jumplist_item_pause_title;
-            pauseTask.ApplicationPath = Assembly.GetEntryAssembly().Location;
-            pauseTask.Arguments = "/pause";
-            pauseTask.IconResourceIndex = 3;
-            jumpList.JumpItems.Add(pauseTask);
-
-            JumpTask stopTask = new JumpTask();
-            stopTask.Title = Localizations.General.app_jumplist_item_restart;
-            stopTask.Description = Localizations.General.app_jumplist_item_restart_title;
-            stopTask.ApplicationPath = Assembly.GetEntryAssembly().Location;
-            stopTask.Arguments = "/restart";
-            stopTask.IconResourceIndex = 4;
-            jumpList.JumpItems.Add(stopTask);
-
-            JumpTask resetTask = new JumpTask();
-            resetTask.Title = Localizations.General.app_jumplist_item_reset;
-            resetTask.Description = Localizations.General.app_jumplist_item_reset_title;
-            resetTask.ApplicationPath = Assembly.GetEntryAssembly().Location;
-            resetTask.Arguments = "/reset";
-            resetTask.IconResourceIndex = 2;
-            jumpList.JumpItems.Add(resetTask);
-
-            JumpTask settingsTask = new JumpTask();
-            settingsTask.Title = Localizations.General.app_jumplist_item_settings;
-            settingsTask.Description = Localizations.General.app_jumplist_item_settings_title;
-            settingsTask.ApplicationPath = Assembly.GetEntryAssembly().Location;
-            settingsTask.Arguments = "/settings";
-            settingsTask.IconResourceIndex = 5;
-            jumpList.JumpItems.Add(settingsTask);
-
-            jumpList.Apply();
-        }
-
-        /// <summary>
-        /// Process command line parameters to support OS integrated jumplist
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public bool ProcessCommandLineArgs(IList<string> args)
-        {
-            if (args == null || args.Count == 0)
-                return true;
-
-            //if ((args.Count > 1))
-            //{
-            //    //the first index always contains the location of the exe so we need to check the second index
-            //    if ((args[1].ToLowerInvariant() == "/start"))
-            //    {
-            //        if (!_stopWatch.IsRunning)
-            //        {
-            //            if (UseSoundEffects)
-            //                _periodCompletedSound.Play();
-            //            _periodCompletedAnimationStoryboard.Stop(this);
-            //            _stopWatch.Start();
-            //            _dispacherTime.Start();
-            //            if (CurrentPeriodType == PomodoroPeriodType.Pomodoro || CurrentPeriodType == PomodoroPeriodType.Stopped)
-            //                _period++;
-            //        }
-            //    }
-            //    else if ((args[1].ToLowerInvariant() == "/pause"))
-            //    {
-            //        if (UseSoundEffects)
-            //        {
-            //            _periodCompletedSound.Stop();
-            //            _periodStartSound.Stop();
-            //        }
-            //        if (_stopWatch.IsRunning)
-            //        {
-            //            _period--;
-            //            _stopWatch.Stop();
-            //        }
-            //    }
-            //    else if ((args[1].ToLowerInvariant() == "/restart"))
-            //    {
-            //        if (_stopWatch.IsRunning)
-            //        {
-            //            if (UseSoundEffects)
-            //                _periodCompletedSound.Play();
-            //            _ticks = 0;
-            //            _stopWatch.Restart();
-            //        }
-            //    }
-            //    else if ((args[1].ToLowerInvariant() == "/reset"))
-            //    {
-            //        ResetTicking();
-            //    }
-            //    else if ((args[1].ToLowerInvariant() == "/settings"))
-            //    {
-            //        this.ShowSettings.Execute(this);
-            //    }
-            //    //else if ((args[1].ToLowerInvariant() == "/homepage"))
-            //    //{
-            //    //    System.Diagnostics.Process.Start("http://lukaszbanasiak.github.io/YAPA/");
-            //    //}
-            //}
-
-            return true;
-        }
-
-        #endregion
-
-
         public ICommand ShowSettings
         {
             get { return _showSettings; }
@@ -1264,7 +1090,7 @@ namespace YAPA
         private void MainWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-            DragMove();
+            base.DragMove();
         }
 
         /// <summary>
@@ -1294,12 +1120,12 @@ namespace YAPA
                 }
             }
 
-            this.Close();
+            base.Close();
         }
 
         private void Minimize_OnClick(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            base.WindowState = WindowState.Minimized;
         }
 
         private void Settings_OnClick(object sender, RoutedEventArgs e)

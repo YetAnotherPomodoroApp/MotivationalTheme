@@ -9,11 +9,5 @@
     
     <Application.Resources>
 
-        <!-- Localization -->
-        <local:LocalizedStrings x:Key="LocalizedStrings"/>
-        
-        <!-- Global value converters -->
-        <converters:VisibilityConverter x:Key="VisibilityConverter" />
-
     </Application.Resources>
 </Application>
