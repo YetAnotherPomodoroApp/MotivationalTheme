@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
@@ -9,10 +8,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Media;
 using System.Windows.Shell;
-using System.Reflection;
 using WindowState = System.Windows.WindowState;
-using GDIScreen = System.Windows.Forms.Screen;
-using System.Windows.Interop;
 using YAPA.Shared;
 
 namespace YAPA
@@ -727,12 +723,7 @@ namespace YAPA
         {
             get
             {
-                return Utils.HexToBrush(YAPA.Properties.Settings.Default.AccentColor);
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.AccentColor = Utils.BrushToHex(value);
-                NotifyPropertyChanged("AccentColor");
+                return Utils.HexToBrush("#FF0080");
             }
         }
 
@@ -740,12 +731,7 @@ namespace YAPA
         {
             get
             {
-                return YAPA.Properties.Settings.Default.TimerForegroundOpacity;
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.TimerForegroundOpacity = value;
-                NotifyPropertyChanged("TimerForegroundOpacity");
+                return 0.3;
             }
         }
 
@@ -753,12 +739,7 @@ namespace YAPA
         {
             get
             {
-                return YAPA.Properties.Settings.Default.TimerShadowOpacity;
-            }
-            set
-            {
-                YAPA.Properties.Settings.Default.TimerShadowOpacity = value;
-                NotifyPropertyChanged("TimerShadowOpacity");
+                return 0.6;
             }
         }
 
@@ -767,7 +748,6 @@ namespace YAPA
             get
             {
                 return (UseLightTheme ? Utils.HexToBrush(Const.COLOR_LIGHT_TIMER_FOREGROUND) : Utils.HexToBrush(Const.COLOR_DARK_TIMER_FOREGROUND));
-
             }
         }
 
