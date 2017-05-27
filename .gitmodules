@@ -1,0 +1,3 @@
+[submodule "YAPA-2"]
+	path = YAPA-2
+	url = https://github.com/YetAnotherPomodoroApp/YAPA-2
