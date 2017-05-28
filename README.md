@@ -11,3 +11,9 @@ Theme created by @tkorc moved to YAPA2 by @floatas.
 ![Main window dark](http://imgur.com/N1in5V3.png)
 ![Mouse over dark](http://imgur.com/q3it4KH.png)
 
+
+Before building locally
+===
+Restore submodules
+1. When cloning ``git clone https://github.com/YetAnotherPomodoroApp/MotivationalTheme --recurse-submodules`` If you allready cloned: ``git submodule update --init --recursive``
+2. Update submodules ``git submodule update --remote --merge``
