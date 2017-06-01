@@ -657,6 +657,17 @@
                         Visibility="{Binding CanStop, Converter={StaticResource VisibilityConverter}}"
                         />
 
+
+                    <!-- Play button -->
+                    <Button
+                        x:Name="ButtonPause"
+                        Content=""
+                        ToolTip="{Binding Source={StaticResource LocalizedStrings}, Path=GeneralResources.app_button_pause_title}"
+                        Command="{Binding ViewModel.PauseCommand}"
+                        Style="{StaticResource StyleButtonIconControl}"
+                        Visibility="{Binding CanPause, Converter={StaticResource VisibilityConverter}}"
+                        />
+
                     <!-- Play button -->
                     <Button
                         x:Name="ButtonStart"

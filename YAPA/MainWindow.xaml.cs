@@ -223,6 +223,7 @@ namespace Motivational
 
         public bool CanStart => ViewModel.StartCommand.CanExecute(null);
         public bool CanStop => ViewModel.StopCommand.CanExecute(null);
+        public bool CanPause => ViewModel.PauseCommand.CanExecute(null);
 
 
         /// <summary>
@@ -375,7 +376,6 @@ namespace Motivational
         {
             WindowState = WindowState.Minimized;
         }
-
 
         private void MainWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
