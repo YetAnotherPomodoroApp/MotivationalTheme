@@ -1,5 +1,5 @@
 ﻿using System;
-using YAPA.Contracts;
+using YAPA.Shared.Contracts;
 
 namespace Motivational
 {

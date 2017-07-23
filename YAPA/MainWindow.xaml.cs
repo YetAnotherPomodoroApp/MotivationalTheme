@@ -7,8 +7,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using YAPA.Contracts;
 using YAPA.Shared;
+using YAPA.Shared.Common;
+using YAPA.Shared.Contracts;
 using WindowState = System.Windows.WindowState;
 
 
