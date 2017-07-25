@@ -14,6 +14,4 @@ Theme created by @tkorc moved to YAPA2 by @floatas.
 
 Before building locally
 ===
-Restore submodules
-1. When cloning ``git clone https://github.com/YetAnotherPomodoroApp/MotivationalTheme --recurse-submodules`` If you allready cloned: ``git submodule update --init --recursive``
-2. Update submodules ``git submodule update --remote --merge``
+Update "YAPA.Shared" and "YAPA.WPF.Shared" packages to latest version.
