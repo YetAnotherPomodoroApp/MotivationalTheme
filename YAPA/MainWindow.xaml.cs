@@ -43,6 +43,8 @@ namespace Motivational
             ViewModel.Engine.OnStarted += EngineOnOnStarted;
 
             UpdateCompletedPomodoroCount();
+
+            UpdateTime();
         }
 
         private void EngineOnOnStarted()
@@ -98,7 +100,7 @@ namespace Motivational
 
         private void Engine_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ViewModel.Engine.Elapsed))
+            if (e.PropertyName == nameof(ViewModel.Engine.Elapsed) || e.PropertyName == nameof(ViewModel.Engine.DisplayValue))
             {
                 RaisePropertyChanged(nameof(CurrentTimeValue));
                 RaisePropertyChanged(nameof(ProgressValue));

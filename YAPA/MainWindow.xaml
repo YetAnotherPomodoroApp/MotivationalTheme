@@ -764,7 +764,7 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         TextAlignment="Right"
-                        Text="{Binding CurrentPomodoroPeriod}"
+                        Text="{Binding ViewModel.Engine.Counter}"
                         Visibility="{Binding CurrentPomodoroPeriod, Converter={StaticResource VisibilityConverter}}"
                         Margin="4,0,0,0"
                         />
